@@ -1,0 +1,72 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+
+int i,j,k;
+
+int recur(int a,int b)
+{
+    int c,d=0;
+    if(replen(b)==j-1)
+    {
+        for(c=a;c<=i;c++)
+        {
+            if(repcheck(b,c)==0)
+            {
+                d++;
+                k++;
+                printf("%d  ",(b*10)+c);
+            }
+        }
+        if(d>0)
+            printf("\n");
+    }
+    else
+    {
+        for(c=a;c<=i;c++)
+            recur(c+1,(b*10)+c);
+    }
+}
+
+int repcheck(int a,int b)
+{
+    int c=0;
+    while(a>0)
+    {
+        if(a%10==b)
+        {
+            c=1;
+            a=0;
+        }
+        else
+            a/=10;
+    }
+    
+    return c;
+}
+
+int replen(int a)
+{
+    int c=0;
+    while(a>0)
+    {
+        c++;
+        a/=10;
+    }
+    return c;
+}
+
+void main()
+{
+    clrscr();
+    printf("Enter\nN Value- ");
+    scanf("%d",&i);
+    printf("Pattern Length- ");
+    scanf("%d",&j);
+    k=0;
+    
+    printf("\nPossible Combinations\n");
+    recur(1,0);
+    printf("\nTotal No. of Combinations- %d",k);
+    getch();
+}

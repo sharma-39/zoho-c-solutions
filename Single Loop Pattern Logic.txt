@@ -1,0 +1,42 @@
+For i = 1 To n
+    j = n - i + 1
+    If i < j Then
+        rtb.Text = rtb.Text + String(i - 1, " ") + Trim(Str(i)) + String(j - i - 1, " ") + Trim(Str(j)) + vbCrLf
+    ElseIf i > j Then
+        rtb.Text = rtb.Text + String(j - 1, " ") + Trim(Str(j)) + String(i - j - 1, " ") + Trim(Str(i)) + vbCrLf
+    Else
+        rtb.Text = rtb.Text + String(i - 1, " ") + Trim(Str(i)) + String(i - 1, " ") + vbCrLf
+    End If
+Next i
+For i = 1 To n
+    For j = 1 To n
+        If j = i Or j = n - i + 1 Then
+            rtb.Text = rtb.Text + Trim(Str(j))
+        Else
+            rtb.Text = rtb.Text + " "
+        End If
+    Next j
+    rtb.Text = rtb.Text + vbCrLf
+Next i
+s = "GURU"
+n = Len(s)
+For i = 1 To n
+    j = n - i + 1
+    If i < j Then
+        rtb.Text = rtb.Text + String(i - 1, " ") + Trim(Mid(s, i, 1)) + String(j - i - 1, " ") + Trim(Mid(s, j, 1)) + vbCrLf
+    ElseIf i > j Then
+        rtb.Text = rtb.Text + String(j - 1, " ") + Trim(Mid(s, j, 1)) + String(i - j - 1, " ") + Trim(Mid(s, i, 1)) + vbCrLf
+    Else
+        rtb.Text = rtb.Text + String(i - 1, " ") + Trim(Mid(s, i, 1)) + String(i - 1, " ") + vbCrLf
+    End If
+Next i
+For i = 1 To n
+    For j = 1 To n
+        If j = i Or j = n - i + 1 Then
+            rtb.Text = rtb.Text + Trim(Mid(s, j, 1))
+        Else
+            rtb.Text = rtb.Text + " "
+        End If
+    Next j
+    rtb.Text = rtb.Text + vbCrLf
+Next i

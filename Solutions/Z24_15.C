@@ -1,0 +1,136 @@
+#include <stdio.h>
+#include <string.h>
+
+char inp[100][100],c;
+int i,j,n,m,k,l;
+
+int insert(char a)
+{
+    for(i=n-1;i>=0;i--)
+    {
+        if(inp[i][k-1]!='-')
+        {
+            l=0;
+            for(j=0;j<m;j++)
+            {
+                if(inp[i][j]=='-')
+                {
+                    l=1;
+                    break;
+                }
+            }
+            if(l==1)
+            {    
+                inp[i][j]=a;
+                break;
+            }
+        }
+        else
+        {
+            inp[i][k-1]=a;
+            break;
+        }
+    }
+    
+    if(i<=0)
+    {
+        l=1;
+        a=inp[0][k-1];
+        for(i=1;i<n;i++)
+        {
+            if(inp[i][k-1]!=a)
+            {
+                l=0;
+                break;
+            }
+        }
+        
+        if(l==1)
+        {
+            for(i=0;i<n;i++)
+                inp[i][k-1]='-';
+        }
+    }
+
+    l=1;
+    a=inp[i][0];
+    for(j=1;j<m;j++)
+    {
+        if(inp[i][j]!=a)
+        {
+            l=0;
+            break;
+        }
+    }
+    
+    if(l==1)
+    {
+        for(j=0;j<m;j++)
+            inp[i][j]='-';
+    }
+    
+    if(i<=0)
+    {
+        l=0;
+        for(j=0;j<m;j++)
+        {
+            if(inp[0][j]=='-')
+            {
+                l=1;
+                break;
+            }
+        }
+        return l;
+    }
+    else
+        return 1;
+}
+
+void printmat()
+{
+    printf("Contents of the matrix :\n");
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<m;j++)
+            printf("%c ",inp[i][j]);
+        printf("\n");
+    }
+}
+
+int main()
+{
+    printf("Enter the matrix size(m*n) :");
+    scanf("%d",&n);
+    scanf("%d",&m);
+    for(i=0;i<n;i++)
+        for(j=0;j<m;j++)
+            inp[i][j]='-';
+    while(1)
+    {
+        printf("Enter the column number :");
+        scanf("%d",&k);
+        if((k>0)&&(k<=m))
+        {
+            printf("Enter the color of the balloon :");
+            scanf(" %c",&c);
+            if(insert(toupper(c))==1)
+            {
+                printmat();
+                printf("Do you wish to continue(Y/N) :");
+                scanf(" %c",&c);
+                if(toupper(c)=='N')
+                {
+                   printf("Program Stopped");
+                    exit(0);
+                }
+            }
+            else
+            {
+                printmat();
+                printf("Column is filled completely. Program is terminated.");
+                exit(0);
+            }
+        }
+    }
+    return 0;
+}

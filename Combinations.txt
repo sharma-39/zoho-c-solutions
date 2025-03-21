@@ -1,0 +1,9 @@
+A formula for the number of possible combinations of r objects from a set of n objects. This is written in any of the ways shown below.
+
+
+
+All forms are read aloud "n choose r."
+
+ 
+
+Formula:	n!/(r!(n-r)!)
